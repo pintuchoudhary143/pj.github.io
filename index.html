@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pintu Choudhary- Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif']
+                    },
+                    colors: {
+                        brand: '#f97316', // Orange theme color
+                        darkBg: '#1e1e1e'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Animations */
+        
+        body {
+            background-color: #f8fafc;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+        }
+        /* Floating Background Dots */
+        
+        .bg-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+            background-size: 40px 40px;
+            opacity: 0.5;
+        }
+        
+        .dark .bg-dots {
+            background-image: radial-gradient(#334155 2px, transparent 2px);
+        }
+        /* Floating Animation for Hero Icons */
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .floating-delay {
+            animation: float 4s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        /* Circular Progress Bar */
+        
+        .progress-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: conic-gradient(#38bdf8 var(--progress), #e2e8f0 0deg);
+            position: relative;
+        }
+        
+        .dark .progress-circle {
+            background: conic-gradient(#38bdf8 var(--progress), #334155 0deg);
+        }
+        
+        .progress-circle::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        
+        .dark .progress-circle::after {
+            background-color: #1e293b;
+        }
+        
+        .progress-circle span {
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+        }
+        /* Glassmorphism Cards */
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Marquee Animation */
+        
+        .marquee-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <div class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+        <nav class="glass-nav rounded-full px-8 py-3 flex items-center gap-8 border border-gray-100">
+            <div class="font-bold text-xl tracking-wide">Portfolio<span class="text-brand">.</span></div>
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+                <a href="#home" class="text-brand border-b-2 border-brand pb-1">Home</a>
+                <a href="#about" class="hover:text-brand transition">About</a>
+                <a href="#skills" class="hover:text-brand transition">Skills</a>
+                <a href="#projects" class="hover:text-brand transition">Projects</a>
+                <a href="#contact" class="hover:text-brand transition">Contact</a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon text-gray-600 dark:text-gray-300" id="theme-icon"></i>
+                    </button>
+            </div>
+            <a href="#contact" class="bg-brand text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-orange-600 transition shadow-lg shadow-orange-500/30">Hire Me</a>
+    </div>
+    </nav>
+    </div>
+
+    <section id="home" class="pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-[90vh] flex items-center">
+        <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+            <div class="space-y-6">
+                <div class="flex gap-3 text-2xl">
+                    <a href="https://www.instagram.com/official__jaat__rj__48/" class="text-pink-600 hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/918741962337" target="_blank" class="text-black hover:scale-110 transition"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://github.com/pintuchoudhary143" class="text-gray-800 hover:scale-110 transition"><i class="fab fa-github"></i></a>
+                    <a href="https://www.youtube.com/@P.A.V.N.SR.SEC.SCHOOL_KEKRI" class="text-red-600 hover:scale-110 transition"><i class="fab fa-youtube"></i></a>
+                </div>
+
+                <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                    Hi, I'm <span class="text-brand">Pintu Choudhary</span>
+                </h1>
+                <p class="text-gray-500 text-lg max-w-lg">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut error quasi est labore? Laborum hic commodi architecto ex eligendi quasi.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="Pintu_CV.html" class="bg-brand text-white px-6 py-3 rounded-full font-medium hover:bg-orange-600 transition shadow-lg shadow-orange-500/30 flex items-center gap-2">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                    <a href="#contact" class="border-2 border-gray-300 px-6 py-3 rounded-full font-medium hover:border-brand hover:text-brand transition flex items-center gap-2">
+                        <i class="far fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative flex justify-center">
+                <div class="relative w-80 h-80 md:w-96 md:h-96">
+                    <img src="pj (2).png" alt="Character" class="w-full h-full rounded-full object-cover shadow-2xl z-10 relative">
+                    <div class="absolute -top-6 -left-6 bg-pink-100 text-pink-600 p-3 rounded-2xl font-bold text-xl floating shadow-lg">Hi</div>
+                    <div class="absolute top-10 -right-4 bg-orange-100 text-orange-600 p-3 rounded-2xl font-bold text-xl floating-delay shadow-lg">Ai</div>
+                    <div class="absolute bottom-10 -right-6 bg-purple-100 text-purple-600 p-3 rounded-2xl font-bold text-xl floating shadow-lg">Pr</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tech Stack Marquee -->
+    <div class="mt-24 glass-card py-4 rounded-2xl marquee-wrapper">
+        <div class="marquee-content space-x-12 px-4 flex items-center text-gray-600 dark:text-gray-300 font-medium">
+            <span><i class="fab fa-angular text-red-600"></i> Angular</span>
+            <span><i class="fab fa-react text-blue-400"></i> Next.js</span>
+            <span><i class="fab fa-js text-yellow-400"></i> JavaScript</span>
+            <span><i class="fab fa-css3 text-blue-500"></i> Tailwind</span>
+            <span><i class="fab fa-node text-green-500"></i> Node.js</span>
+            <span><i class="fab fa-python text-blue-600"></i> Python</span>
+            <!-- Repeat for infinite scroll effect -->
+            <span><i class="fab fa-angular text-red-600"></i> Angular</span>
+            <span><i class="fab fa-react text-blue-400"></i> Next.js</span>
+            <span><i class="fab fa-js text-yellow-400"></i> JavaScript</span>
+        </div>
+    </div>
+    <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="bg-white rounded-[40px] p-8 md:p-14 shadow-xl shadow-gray-100 grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative flex justify-center">
+                <div class="absolute inset-0 bg-orange-100 transform rotate-45 scale-75 rounded-3xl"></div>
+                <img src="pj (3).png" alt="About" class="w-64 z-10 relative drop-shadow-xl">
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-3xl font-bold text-brand">About Me</h2>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ut aperiam quia dignissimos corrupti, hic fugit, eveniet reprehenderit possimus voluptatum tenetur provident consequatur itaque id rerum? Quo quaerat ab.
+                </p>
+
+                <div class="flex gap-8 py-4 border-t border-gray-100">
+                    <div>
+                        <h3 class="text-2xl font-bold text-brand">5+</h3>
+                        <p class="text-xs text-gray-400">Education</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-brand">10+</h3>
+                        <p class="text-xs text-gray-400">Years Experience</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-brand">100+</h3>
+                        <p class="text-xs text-gray-400">Projects Completed</p>
+                    </div>
+                </div>
+
+                <button class="border border-brand text-brand px-6 py-2 rounded-full text-sm font-medium hover:bg-brand hover:text-white transition">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="bg-white rounded-[40px] p-8 md:p-14 shadow-xl shadow-gray-100 text-center">
+            <h2 class="text-3xl font-bold text-brand mb-2">My Skills</h2>
+            <p class="text-gray-400 text-sm mb-12">Technologies and tools I work with to create amazing web experiences</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="border border-gray-100 p-5 rounded-2xl text-left hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fab fa-laravel text-red-500 text-2xl"></i>
+                        <span class="font-semibold text-sm">Laravel</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Proficiency</span><span>90%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress bg-red-500" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="border border-gray-100 p-5 rounded-2xl text-left hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-cube text-purple-600 text-2xl"></i>
+                        <span class="font-semibold text-sm">Framer Motion</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Proficiency</span><span>80%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress bg-purple-600" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="border border-gray-100 p-5 rounded-2xl text-left hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fab fa-vuejs text-green-500 text-2xl"></i>
+                        <span class="font-semibold text-sm">Vue</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Proficiency</span><span>85%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress bg-green-500" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="border border-gray-100 p-5 rounded-2xl text-left hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fab fa-react text-blue-400 text-2xl"></i>
+                        <span class="font-semibold text-sm">React</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Proficiency</span><span>95%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress bg-blue-400" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="border border-gray-100 p-5 rounded-2xl text-left hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fab fa-css3-alt text-teal-400 text-2xl"></i>
+                        <span class="font-semibold text-sm">Tailwind CSS</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Proficiency</span><span>90%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress bg-teal-400" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="border border-gray-100 p-5 rounded-2xl text-left hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-fire text-yellow-500 text-2xl"></i>
+                        <span class="font-semibold text-sm">Firebase.js</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Proficiency</span><span>80%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress bg-yellow-500" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="border border-gray-100 p-5 rounded-2xl text-left hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fab fa-python text-blue-600 text-2xl"></i>
+                        <span class="font-semibold text-sm">Python</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Proficiency</span><span>70%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress bg-blue-600" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="border border-gray-100 p-5 rounded-2xl text-left hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-bolt text-purple-500 text-2xl"></i>
+                        <span class="font-semibold text-sm">Vite</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Proficiency</span><span>85%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress bg-purple-500" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="bg-white rounded-[40px] p-8 md:p-14 shadow-xl shadow-gray-100 text-center">
+            <h2 class="text-3xl font-bold text-brand mb-2">My Projects</h2>
+            <p class="text-gray-400 text-sm mb-12">A showcase of my recent work</p>
+
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <div class="border border-gray-100 rounded-2xl p-4 hover:shadow-lg transition">
+                    <div class="bg-gray-100 h-32 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition" alt="Project">
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">E-Commerce Platform</h3>
+                    <p class="text-[10px] text-gray-400 mb-3">Full-featured e-commerce platform with payment gateway.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500"><i class="fab fa-github"></i> Code</span>
+                        <button class="bg-brand text-white text-xs px-4 py-1 rounded-full">Demo</button>
+                    </div>
+                </div>
+                <div class="border border-gray-100 rounded-2xl p-4 hover:shadow-lg transition">
+                    <div class="bg-gray-100 h-32 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition" alt="Project">
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Fitness Tracker App</h3>
+                    <p class="text-[10px] text-gray-400 mb-3">Mobile fitness app with workout plans.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500"><i class="fab fa-github"></i> Code</span>
+                        <button class="bg-brand text-white text-xs px-4 py-1 rounded-full">Demo</button>
+                    </div>
+                </div>
+                <div class="border border-gray-100 rounded-2xl p-4 hover:shadow-lg transition">
+                    <div class="bg-gray-100 h-32 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition" alt="Project">
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">AI Content Generator</h3>
+                    <p class="text-[10px] text-gray-400 mb-3">AI powered content generation tool.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500"><i class="fab fa-github"></i> Code</span>
+                        <button class="bg-brand text-white text-xs px-4 py-1 rounded-full">Demo</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="mt-8 border border-brand text-brand px-8 py-2 rounded-full text-sm font-medium hover:bg-brand hover:text-white transition">
+                View All Projects
+            </button>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="bg-white rounded-[40px] p-8 md:p-14 shadow-xl shadow-gray-100 grid md:grid-cols-2 gap-12 items-center">
+
+            <div class="flex justify-center flex-col items-center">
+                <h2 class="text-3xl font-bold mb-2">Get In <span class="text-brand">Touch</span></h2>
+                <p class="text-gray-400 text-sm mb-8">Let's discuss your project</p>
+                <div class="relative">
+                    <img src="pj (2).png" alt="Contact Avatar" class="w-64 z-10 drop-shadow-xl rounded-full">
+                    <div class="absolute top-4 -right-4 bg-white p-3 rounded-xl shadow-lg animate-bounce">
+                        <i class="fas fa-envelope text-blue-400 text-2xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-brand text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <form onsubmit="sendToWhatsApp(event)" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" id="firstName" placeholder="First Name" required class="w-full bg-gray-50 px-4 py-3 rounded-xl text-sm outline-none focus:ring-2 focus:ring-brand border border-gray-100">
+                        <input type="text" id="lastName" placeholder="Last Name" class="w-full bg-gray-50 px-4 py-3 rounded-xl text-sm outline-none focus:ring-2 focus:ring-brand border border-gray-100">
+                    </div>
+                    <input type="email" id="email" placeholder="Email Address" required class="w-full bg-gray-50 px-4 py-3 rounded-xl text-sm outline-none focus:ring-2 focus:ring-brand border border-gray-100">
+                    <input type="tel" id="phone" placeholder="Phone Number" class="w-full bg-gray-50 px-4 py-3 rounded-xl text-sm outline-none focus:ring-2 focus:ring-brand border border-gray-100">
+                    <textarea id="message" rows="4" placeholder="Your Message" required class="w-full bg-gray-50 px-4 py-3 rounded-xl text-sm outline-none focus:ring-2 focus:ring-brand border border-gray-100 resize-none"></textarea>
+
+                    <button type="submit" class="w-full bg-brand text-white py-3 rounded-xl font-medium hover:bg-orange-600 transition shadow-lg shadow-orange-500/30">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-12 text-gray-400 text-xs flex justify-between items-center px-4">
+            <p>Full Stack Developer & UI/UX Designer</p>
+            <div class="flex space-x-6 text-xl text-gray-500 dark:text-gray-400">
+                <a href="https://github.com/pintuchoudhary143" class="hover:text-primary transition"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/pintu-choudhary-7b30a9260/" class="hover:text-primary transition"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/official__jaat__rj__48/" class="hover:text-primary transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/pintu.choudhary.976711" class="hover:text-primary transition"><i class="fab fa-facebook"></i></a>
+                <a href="https://web.telegram.org/k/" class="hover:text-primary transition"><i class="fab fa-telegram"></i></a>
+                <!-- WhatsApp Icon Added Here -->
+                <a href="https://www.youtube.com/@P.A.V.N.SR.SEC.SCHOOL_KEKRI" class="hover:text-primary transition"><i class="fab fa-youtube"></i></a>
+                <!-- WhatsApp Icon Added Here -->
+                <a href="https://wa.me/918741962337" target="_blank" class="hover:text-green-500 transition" title="Chat on WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+        </div>
+        <!-- Make sure to include FontAwesome in your <head> if you haven't already -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <div class="dashboard-contact-actions">
+            <!-- Phone Button (Click to call) -->
+            <a href="tel:+919876543210" class="action-btn phone-btn">
+                <i class="fas fa-phone-alt"></i>
+                <span>Call Us</span>
+            </a>
+
+            <!-- WhatsApp Button (Opens chat directly) -->
+            <a href="https://wa.me/918741962337?text=Hello!" target="_blank" class="action-btn whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+        </div>
+        <p>&copy; 2026 Made with ❤️ by You</p>
+        </div>
+    </section>
+
+    <script>
+        function sendToWhatsApp(event) {
+            // Form ko refresh hone se rokna
+            event.preventDefault();
+
+            // Form se data nikalna
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phoneStr = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            // ===== YAHAN APNA WHATSAPP NUMBER DAALEIN (Country code ke sath, bina + ke) =====
+            const myWhatsAppNumber = "918741962337";
+
+            // WhatsApp par bheja jane wala message format karna
+            let whatsappMessage = `Hello Pintu Choudhary, I want to connect!%0A%0A`;
+            whatsappMessage += `*Name:* ${firstName} ${lastName}%0A`;
+            whatsappMessage += `*Email:* ${email}%0A`;
+            if (phoneStr) {
+                whatsappMessage += `*Phone:* ${phoneStr}%0A`;
+            }
+            whatsappMessage += `*Message:* ${message}%0A`;
+
+            // WhatsApp API URL create karna
+            const whatsappURL = `https://wa.me/918741962337?text=${whatsappMessage}`;
+
+            // Naye tab me WhatsApp kholna
+            window.open(whatsappURL, '_blank');
+        }
+        // Dark Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+    </script>
+</body>
+
+</html
